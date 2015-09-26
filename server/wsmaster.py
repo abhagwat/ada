@@ -42,6 +42,7 @@ class WSHandler(WebSocketHandler):
 
     def on_close(self):
         print "Connection closed"
+        del self.connections[self.uniqueID]
 
     def send_sync_messages(self):
         for connection in self.connections.values():
