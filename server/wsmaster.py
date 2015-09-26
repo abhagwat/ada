@@ -46,7 +46,7 @@ class WSHandler(WebSocketHandler):
     def send_sync_messages(self):
         for connection in self.connections.values():
             connection.write_message("seek %d" %counter)
-        counter += 1
+        self.time_counter += 1
 
 
 app = tornado.web.Application([
