@@ -19,13 +19,13 @@ if 'local' in sys.argv:
 myname = sys.argv[1]
 
 if myname == 'apoorva':
-    discrete = lambda x: 100 if (math.floor(x)/2) % 2 == 0 else 0
+    discrete = lambda x: 300 if (math.floor(x)/2) % 2 == 0 else 0
 if myname == 'nancy':
-    discrete = lambda x: 0 if (math.floor(x)/2) % 2 == 0 else 100
+    discrete = lambda x: 0 if (math.floor(x)/2) % 2 == 0 else 300
 if myname == 'nikhil':
-    discrete = lambda x: 100 if (math.floor(x)/2) % 2 == 0 else 0
+    discrete = lambda x: 300 if (math.floor(x)/2) % 2 == 0 else 0
 if myname == 'shantanu':
-    discrete = lambda x: 0 if (math.floor(x)/2) % 2 == 0 else 100
+    discrete = lambda x: 0 if (math.floor(x)/2) % 2 == 0 else 300
 
 try:
     volumeFunction = eval(sys.argv[2])
