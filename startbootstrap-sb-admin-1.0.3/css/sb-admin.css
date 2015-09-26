@@ -38,6 +38,10 @@ section {
     color: #fff;
 }
 
+.create-broadcast {
+    background-color: black;
+}
+
 .spaced {
     padding-bottom: 200px;
 }
@@ -121,7 +125,7 @@ a.bg-primary:hover {
     }
 
     #page-wrapper {
-        padding: 10px;
+        /*padding: 10px;*/
     }
 }
 
