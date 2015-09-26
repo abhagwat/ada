@@ -19,6 +19,7 @@ class WSHandler(WebSocketHandler):
         self.connections[self.uniqueID] = self
 
     def on_message(self, message):
+        print "Mesij : ", message
         for connID in self.connections:
             if connID != self.uniqueID:
                 self.write_message(self.uniqueID + " : " + message)
