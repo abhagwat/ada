@@ -92,7 +92,11 @@ def listenToVLC():
     print "entered the listener"
     
     while True:
-        pollState = wsclient.player.vlcProcess.poll()
+        try:
+            pollState = wsclient.player.vlcProcess.poll()
+        except:
+            continue
+
         if pollState:
             continue
         line = wsclient.player.vlcProcess.stdout.readline()
