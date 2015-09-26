@@ -18,7 +18,7 @@ class WSHandler(WebSocketHandler):
         print "WebSocket opened"
         self.uniqueID = str(uuid.uuid4())[:8]
 
-        if self.connections = {}: # This is the first connection
+        if self.connections == {}: # This is the first connection
             self.masterClientID = self.uniqueID
         self.connections[self.uniqueID] = self
 
