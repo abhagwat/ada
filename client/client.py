@@ -1,3 +1,5 @@
+#!/usr/local/bin/python -i
+
 from ws4py.client.threadedclient import WebSocketClient as WebSocket
 
 from threading import Thread
