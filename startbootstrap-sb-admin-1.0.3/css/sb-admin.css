@@ -94,6 +94,9 @@ a.bg-primary:hover {
     height: auto;
     font-size: 15px;
     text-align: -webkit-left;
+    /*margin: 2px;
+    margin-left: 10px;*/
+    padding: 5px 10px;
 }
 
 .panel-heading-override {
@@ -192,10 +195,10 @@ li.message-preview>a {
 li.message-footer {
     margin: 5px 0;
 }
-
-ul.alert-dropdown {
-    width: 250px;
-}
+ /*hereherherherher*/
+    ul.alert-dropdown {
+        width: 300px;
+    }
 
 /* Side Navigation */
 
@@ -315,8 +318,22 @@ ul.alert-dropdown {
 
 .label-accept{
     background-color: #339933;
+    margin-right: 5px;
+    margin-left: 2px;
 }
 
 .label-reject{
     background-color: red;
+}
+
+.dropdown-menu>li{
+    padding: 2px 7px;
+}
+
+.invite{
+    font-size: 13pt;
+}
+
+.changecolor{
+    color: #f5ffff;
 }
