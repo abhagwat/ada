@@ -31,8 +31,9 @@ class WSHandler(WebSocketHandler):
         for connection in self.connections.values():
             print "Sending play message"
             connection.write_message("play")
-        periodicCallback = PeriodicCallback(self.send_sync_messages, 1000)
-        periodicCallback.start()
+
+        # periodicCallback = PeriodicCallback(self.send_sync_messages, 1000)
+        # periodicCallback.start()
 
         # for connID, connection in self.connections.items():
         #     if connID != self.uniqueID:
