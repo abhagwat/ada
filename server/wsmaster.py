@@ -3,6 +3,7 @@
 from tornado.websocket import WebSocketHandler
 import tornado
 import tornado.web
+from tornado.ioloop import PeriodicCallback
 
 import simplejson as json
 import uuid
@@ -10,6 +11,7 @@ import uuid
 class WSHandler(WebSocketHandler):
     connections = {}
     masterClientID = None
+    time_counter = 0
 
     def check_origin(self, origin):
         return True
@@ -31,6 +33,7 @@ class WSHandler(WebSocketHandler):
 
         for connection in self.connections.values():
             connection.write_message("play")
+        PeriodicCallback(self.send_sync_messages, 1000)
 
         # for connID, connection in self.connections.items():
         #     if connID != self.uniqueID:
@@ -38,6 +41,11 @@ class WSHandler(WebSocketHandler):
 
     def on_close(self):
         print "Connection closed"
+
+    def send_sync_messages(self):
+        for connection in self.connections.values():
+            connection.write_message("seek %d" %counter)
+        counter += 1
 
 
 app = tornado.web.Application([

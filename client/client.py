@@ -20,14 +20,16 @@ class WSClient(WebSocket):
     def opened(self):
         print "We established a connection"
         self.player = SongPlayer("simarik.mp3")
+        self.player.startProcess()
+        self.player.pause()
 
     def received_message(self, message):
         print "We got : ", message
         # assert message == "play"
-        self.player.startProcess()
-        self.player.pause()
-        sleep(5)
-        self.player.pause()
+        if message == "play":
+            self.player.pause()
+        elif "seek" in message:
+            self.player.sendCommandToProcess(message)
 
     def closed(self, code, reason=None):
         print "Connection closed booooo!"
