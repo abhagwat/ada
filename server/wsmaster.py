@@ -20,9 +20,9 @@ class WSHandler(WebSocketHandler):
 
     def on_message(self, message):
         print "Mesij : ", message
-        for connID in self.connections:
+        for connID, connection in self.connections.items():
             if connID != self.uniqueID:
-                self.write_message(self.uniqueID + " : " + message)
+                connection.write_message(self.uniqueID + " : " + message)
 
     def on_close(self):
         print "Connection closed"
