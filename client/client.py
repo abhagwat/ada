@@ -105,6 +105,7 @@ def listenToVLC():
             else:
                 print "Seeking to ", wsclient.serverPrescription
                 wsclient.player.seek(wsclient.serverPrescription)
+                
         except:
             pass
 
