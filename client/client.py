@@ -16,6 +16,17 @@ wsURL = dropletURL
 if 'local' in sys.argv:
     wsURL = apoorvaURL
 
+myname = sys.argv[1]
+
+if myname == 'apoorva':
+    discrete = lambda x: 100 if (math.floor(x)/2) % 2 == 0 else 0
+if myname == 'nancy':
+    discrete = lambda x: 0 if (math.floor(x)/2) % 2 == 0 else 100
+if myname == 'nikhil':
+    discrete = lambda x: 100 if (math.floor(x)/2) % 2 == 0 else 0
+if myname == 'shantanu':
+    discrete = lambda x: 0 if (math.floor(x)/2) % 2 == 0 else 100
+
 try:
     volumeFunction = eval(sys.argv[2])
 except:
