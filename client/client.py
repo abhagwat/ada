@@ -31,7 +31,7 @@ class WSClient(WebSocket):
             self.player.pause()
         elif "seek" in str(message):
             print "Executing ", str(message)
-            self.player.sendCommandToProcess(str(message))
+            self.player.sendCommandToProcess(str(message)+"\n")
 
     def closed(self, code, reason=None):
         print "Connection closed booooo!"
