@@ -99,11 +99,12 @@ def listenToVLC():
 
         try:
             timestamp = int(line)
+            print "The current VLC position is ", timestamp
             if timestamp == wsclient.serverPrescription:
                 print "We're in sync"
             else:
-                print "Seeking to ", timestamp
-                wsclient.player.seek(timestamp)
+                print "Seeking to ", wsclient.serverPrescription
+                wsclient.player.seek(wsclient.serverPrescription)
         except:
             pass
 
