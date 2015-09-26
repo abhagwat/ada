@@ -28,10 +28,6 @@ class WSHandler(WebSocketHandler):
     def on_message(self, message):
         print "Mesij : ", message
 
-        if self.uniqueID != self.masterClientID:
-            print "Non-master message received, ignoring"
-            return
-
         for connection in self.connections.values():
             print "Sending play message"
             connection.write_message("play")
@@ -47,11 +43,9 @@ class WSHandler(WebSocketHandler):
         del self.connections[self.uniqueID]
 
     def send_sync_messages(self):
-        # for connection in self.connections.values():
-        #     connection.write_message("seek %d" % self.time_counter)
+        for connection in self.connections.values():
+            connection.write_message("seek %d" % self.time_counter)
         
-        connection = random.choice(self.connections.values())
-        connection.write_message("seek %d" % self.time_counter)
         self.time_counter += 1
 
 

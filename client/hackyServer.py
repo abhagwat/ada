@@ -10,6 +10,7 @@ def hack():
     import client
     print "imported"
     client.write("play")
+    return "Playing!"
 
 if __name__=='__main__':
     hackyServer.run(port=8000, host='0.0.0.0', debug=True)
