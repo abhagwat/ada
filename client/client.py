@@ -25,7 +25,9 @@ class WSClient(WebSocket):
         print "We got : ", message
         # assert message == "play"
         self.player.startProcess()
-
+        self.player.pause()
+        sleep(5)
+        self.player.pause()
 
     def closed(self, code, reason=None):
         print "Connection closed booooo!"
