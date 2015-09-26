@@ -33,8 +33,9 @@ class WSClient(WebSocket):
             self.player.sendCommandToProcess(str(message))
         elif "jumpandplay" in str(message):
             print "Executing ", str(message)
-            jumpTarget = str(message)[11:]
-            self.player.sendCommandToProcess("seek" + jumpTarget + "\npause\n")
+            jumpTarget = int(str(message)[12:])
+            self.player.seek(jumpTarget)
+            self.player.pause()
 
     def closed(self, code, reason=None):
         print "Connection closed booooo!"
