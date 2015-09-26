@@ -19,7 +19,7 @@ if 'local' in sys.argv:
     wsURL = shantanuURL
 
 try:
-    myname = sys.argv[1]
+    myname = sys.argv[2]
 except:
     myname = 'Robert'
 
@@ -46,7 +46,7 @@ if myname == 'shantanu':
 
 
 try:
-    volumeFunction = eval(sys.argv[2])
+    volumeFunction = eval(sys.argv[3])
 except:
     volumeFunction = lambda x: 200
 
