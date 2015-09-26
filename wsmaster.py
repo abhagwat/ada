@@ -17,9 +17,9 @@ class WSHandler(WebSocketHandler):
         print "Connection closed"
 
 
-app = tornado.web.Application(
-        [r"/socket", WSHandler]
-    )
+app = tornado.web.Application([
+        (r"/socket", WSHandler)
+    ])
 
 if __name__ == "__main__":
     app.listen(8888)
