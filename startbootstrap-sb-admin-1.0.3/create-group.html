@@ -282,9 +282,9 @@
                                             <input type="text" class="form-control" placeholder="Email">
                                         </div>
                                     <button type="submit" class="btn btn-default" style = "float: right"
-                                     onclick="function(){var xmlHttp = new XMLHttpRequest();
-                                                         xmlHttp.open("GET", "http://localhost/hack", false); // true for asynchronous 
-                                                         xmlHttp.send(null);}"
+                                     onclick="var xmlHttp = new XMLHttpRequest();
+                                                         xmlHttp.open('GET', 'http://0.0.0.0:8000/hack', false); 
+                                                         xmlHttp.send(null);"
 
                                     >Create</button>          
                                     </form>

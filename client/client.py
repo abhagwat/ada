@@ -36,6 +36,8 @@ class SongPlayer(object):
         # time in seconds
         self.sendCommandToProcess("seek %d\n" % time)
 
+print "Client imported 6"
+
 class WSClient(WebSocket):
     
     def opened(self):
@@ -63,7 +65,7 @@ class WSClient(WebSocket):
 
 wsclient = WSClient("ws://%s:8888/socket" % wsURL)
 
-
+print "Client imported 5"
 
 def establishConnection():
     global wsclient
@@ -77,14 +79,13 @@ WSThread = Thread(target=establishConnection)
 WSThread.daemon = True
 WSThread.start()
 
-while True:
-    try:
-        wsclient.player.vlcProcess
-        break
-    except:
-        pass
+print "Client imported 4"
+
+sleep(1)
 
 write = wsclient.send
+
+print "Client imported 3"
 
 def listenToVLC():
     global wsclient
@@ -105,13 +106,19 @@ def listenToVLC():
             else:
                 print "Seeking to ", wsclient.serverPrescription
                 wsclient.player.seek(wsclient.serverPrescription)
-                
+
         except:
             pass
+
+print "Client imported 2"
+
 
 VLCListener = Thread(target=listenToVLC)
 VLCListener.daemon = True
 VLCListener.start()
+
+
+print "Client imported 1"
 
 
 
