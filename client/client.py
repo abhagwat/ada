@@ -19,23 +19,23 @@ if 'local' in sys.argv:
 myname = sys.argv[1]
 
 if myname == 'apoorva':
-    discrete = lambda x: 300 if (math.floor(x)/2) % 2 == 0 else 0
+    discrete = (lambda x: 300 if (math.floor(x)/2) % 2 == 0 else 0)
 if myname == 'nancy':
-    discrete = lambda x: 0 if (math.floor(x)/2) % 2 == 0 else 300
+    discrete = (lambda x: 0 if (math.floor(x)/2) % 2 == 0 else 300)
 if myname == 'nikhil':
-    discrete = lambda x: 300 if (math.floor(x)/2) % 2 == 0 else 0
+    discrete = (lambda x: 300 if (math.floor(x)/2) % 2 == 0 else 0)
 if myname == 'shantanu':
-    discrete = lambda x: 0 if (math.floor(x)/2) % 2 == 0 else 300
+    discrete = (lambda x: 0 if (math.floor(x)/2) % 2 == 0 else 300)
 
 
 if myname == 'apoorva':
-    circular = lambda x: 200 + (100*(math.sin(x)))
+    circular = (lambda x: 200 + (100*(math.sin(x))))
 if myname == 'nancy':
-    circular = lambda x: 200 + (100*(math.sin(x - (math.pi/2.0))))
+    circular = (lambda x: 200 + (100*(math.sin(x - (math.pi/2.0)))))
 if myname == 'nikhil':
-    circular = lambda x: 200 + (100*(math.sin(x - (math.pi))))
+    circular = (lambda x: 200 + (100*(math.sin(x - (math.pi)))))
 if myname == 'shantanu':
-    circular = lambda x: 200 + (100*(math.sin(x - (3.0*(math.pi)/4.0))))
+    circular = (lambda x: 200 + (100*(math.sin(x - (3.0*(math.pi)/2.0)))))
 
 
 
