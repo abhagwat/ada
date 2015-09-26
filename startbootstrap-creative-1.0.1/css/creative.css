@@ -217,7 +217,8 @@ header .header-content .header-content-inner p {
     font-size: 16px;
     font-weight: 500;
     color: #f0ffff;
-    text-shadow: 1px 1px #f8afa1;
+    background-color: black;
+    /*text-shadow: 2.5px 2.5px #f8afa1;*/
     /*text-shadow: -1.5px 0 #f05f40, 0 1.5px #f05f40, 1.5px 0 #f05f40, 0 -1.5px #f05f40;*/
 }
 
@@ -244,7 +245,7 @@ header .header-content .header-content-inner p {
     header .header-content .header-content-inner p {
         margin-right: auto;
         margin-left: auto;
-        max-width: 80%;
+        max-width: 20.5%;
         font-size: 19px;
     }
 }

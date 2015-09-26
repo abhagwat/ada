@@ -22,7 +22,7 @@ section {
 }
 
 .background {
-    background: url(../img/majorlazer.jpg) no-repeat bottom center scroll;
+    background: url(../img/paaaaaarty.jpg) no-repeat bottom center scroll;
     background-color: #000;
     background-position: center;
     -webkit-background-size: cover;
@@ -44,7 +44,7 @@ section {
 
 .bg-primary {
   color: #fff;
-  background-color: #808080;
+  background-color: transparent;
 }
 
 a.bg-primary:hover {
