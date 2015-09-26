@@ -26,9 +26,9 @@ class WSClient(WebSocket):
     def received_message(self, message):
         print "We got : ", message
         # assert message == "play"
-        if message == "play":
+        if str(message) == "play":
             self.player.pause()
-        elif "seek" in message:
+        elif "seek" in str(message):
             self.player.sendCommandToProcess(message)
 
     def closed(self, code, reason=None):
