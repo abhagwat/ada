@@ -29,6 +29,7 @@ class WSClient(WebSocket):
         if str(message) == "play":
             self.player.pause()
         elif "seek" in str(message):
+            print "Executing ", str(message)
             self.player.sendCommandToProcess(message)
 
     def closed(self, code, reason=None):
