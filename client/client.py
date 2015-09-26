@@ -22,8 +22,8 @@ class WSClient(WebSocket):
 
     def received_message(self, message):
         print "We got : ", message
-        assert message == "play"
-        self.player.play()
+        # assert message == "play"
+        self.player.startProcess()
 
     def closed(self, code, reason=None):
         print "Connection closed booooo!"
@@ -51,7 +51,7 @@ class SongPlayer(object):
         self.filename = filename
 
     def startProcess(self):
-        self.vlcProcess = Popen(["vlc", "-I", "rc", self.filename], stdin=PIPE)
+        self.vlcProcess = Popen(["/Applications/VLC.app/Contents/MacOS/VLC", "-I", "rc", self.filename], stdin=PIPE)
 
     def sendCommandToProcess(self, input):
         self.vlcProcess.communicate(input=input)

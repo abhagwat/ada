@@ -26,6 +26,7 @@ class WSHandler(WebSocketHandler):
         print "Mesij : ", message
 
         if self.uniqueID != self.masterClientID:
+            print "Non-master message received, ignoring"
             return
 
         for connection in self.connections.values():
