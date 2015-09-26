@@ -45,7 +45,7 @@ class WSHandler(WebSocketHandler):
 
     def send_sync_messages(self):
         for connection in self.connections.values():
-            connection.write_message("seek %d" %counter)
+            connection.write_message("seek %d" % self.time_counter)
         self.time_counter += 1
 
 
