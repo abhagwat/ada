@@ -26,12 +26,12 @@ class WSClient(WebSocket):
     def received_message(self, message):
         print "We got : ", message
         # assert message == "play"
-        if str(message) == "play":
-            self.player.pause()
-        elif "seek" in str(message):
-            print "Executing ", str(message)
-            self.player.sendCommandToProcess(str(message))
-        elif "jumpandplay" in str(message):
+        # if str(message) == "play":
+        #     self.player.pause()
+        # elif "seek" in str(message):
+        #     print "Executing ", str(message)
+        #     self.player.sendCommandToProcess(str(message))
+        if "jumpandplay" in str(message):
             print "Executing ", str(message)
             jumpTarget = int(str(message)[12:])
             self.player.pause()
