@@ -64,14 +64,14 @@ class SongPlayer(object):
         self.vlcProcess.stdin.write(input)
 
     def pause(self):
-        self.sendCommandToProcess("pause\r\n")
+        self.sendCommandToProcess("pause\n")
 
     def play(self):
         self.sendCommandToProcess("play")
 
     def seek(self, time):
         # time in seconds
-        self.sendCommandToProcess("seek %d" %time)
+        self.sendCommandToProcess("seek %d\n" % time)
 
 
 
