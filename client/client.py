@@ -31,7 +31,7 @@ class WSClient(WebSocket):
         elif "seek" in str(message):
             print "Executing ", str(message)
             self.player.sendCommandToProcess(str(message))
-        elfi "jumpandplay" in str(message):
+        elif "jumpandplay" in str(message):
             print "Executing ", str(message)
             jumpTarget = str(message)[11:]
             self.player.sendCommandToProcess("seek" + jumpTarget + "\npause\n")
