@@ -144,7 +144,7 @@ a.bg-primary:hover {
     padding-top: 15px;
     padding-bottom: 15px;
     line-height: 20px;
-    color: #999;
+    color: #dbdbdb;
 }
 
 .top-nav>li>a:hover,
@@ -194,7 +194,7 @@ li.message-footer {
 }
 
 ul.alert-dropdown {
-    width: 200px;
+    width: 250px;
 }
 
 /* Side Navigation */
@@ -311,4 +311,12 @@ ul.alert-dropdown {
 
 .panel-yellow > a:hover {
     color: #df8a13;
+}
+
+.label-accept{
+    background-color: #339933;
+}
+
+.label-reject{
+    background-color: red;
 }

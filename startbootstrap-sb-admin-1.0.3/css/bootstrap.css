@@ -4802,6 +4802,10 @@ a.label:focus {
 .label-warning[href]:focus {
   background-color: #ec971f;
 }
+.label-accept {
+  background-color: #339933;
+}
+
 .label-danger {
   background-color: #d9534f;
 }
