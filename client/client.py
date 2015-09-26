@@ -27,6 +27,18 @@ if myname == 'nikhil':
 if myname == 'shantanu':
     discrete = lambda x: 0 if (math.floor(x)/2) % 2 == 0 else 300
 
+
+if myname == 'apoorva':
+    circular = lambda x: 200 + (100*(math.sin(x)))
+if myname == 'nancy':
+    circular = lambda x: 200 + (100*(math.sin(x - (math.pi/2.0))))
+if myname == 'nikhil':
+    circular = lambda x: 200 + (100*(math.sin(x - (math.pi))))
+if myname == 'shantanu':
+    circular = lambda x: 200 + (100*(math.sin(x - (3.0*(math.pi)/4.0))))
+
+
+
 try:
     volumeFunction = eval(sys.argv[2])
 except:
