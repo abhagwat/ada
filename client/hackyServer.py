@@ -1,14 +1,12 @@
 
 from flask import *
 import requests
+import client
 
 hackyServer = Flask(__name__)
 
 @hackyServer.route('/hack')
 def hack():
-    print "Entered"
-    import client
-    print "imported"
     client.write("play")
     return "Playing!"
 
