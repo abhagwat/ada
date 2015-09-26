@@ -33,7 +33,8 @@ class WSHandler(WebSocketHandler):
 
         for connection in self.connections.values():
             connection.write_message("play")
-        PeriodicCallback(self.send_sync_messages, 500)
+        periodicCallback = PeriodicCallback(self.send_sync_messages, 500)
+        periodicCallback.start()
 
         # for connID, connection in self.connections.items():
         #     if connID != self.uniqueID:
