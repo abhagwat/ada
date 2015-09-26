@@ -1,4 +1,4 @@
-from ws4py.websocket import WebSocket
+from ws4py.client.threadedclient import WebSocketClient as WebSocket
 
 from threading import Thread
 
@@ -13,10 +13,16 @@ class WSClient(WebSocket):
     def closed(self):
         print "Connection closed booooo!"
 
-wsclient = WSClient()
+wsclient = WSClient("ws://ada:8888/socket")
+
+
 
 def start():
-    wsclient.run()
+    global wsclient
+    while not wsclient:
+        pass
+    wsclient.connect()
+    wsclient.run_forever()
 
 WSThread = Thread(target=start)
 WSThread.run()
