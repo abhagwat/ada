@@ -8,6 +8,8 @@ from tornado.ioloop import PeriodicCallback
 import simplejson as json
 import uuid
 
+from time import sleep
+
 class WSHandler(WebSocketHandler):
     connections = {}
     masterClientID = None
@@ -31,10 +33,15 @@ class WSHandler(WebSocketHandler):
             print "Non-master message received, ignoring"
             return
 
+        pointer = 0
         for connection in self.connections.values():
-            connection.write_message("play")
-        periodicCallback = PeriodicCallback(self.send_sync_messages, 1000)
-        periodicCallback.start()
+            connection.write_message("jumpandplay %d" % pointer)
+            pointer += 1
+            sleep(1)
+
+        if False:
+            periodicCallback = PeriodicCallback(self.send_sync_messages, 1000)
+            periodicCallback.start()
 
         # for connID, connection in self.connections.items():
         #     if connID != self.uniqueID:
