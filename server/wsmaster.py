@@ -46,7 +46,7 @@ class WSHandler(WebSocketHandler):
         # for connection in self.connections.values():
         #     connection.write_message("seek %d" % self.time_counter)
         
-        connection = random.choice(connections.values())
+        connection = random.choice(self.connections.values())
         connection.write_message("seek %d" % self.time_counter)
         self.time_counter += 1
 
