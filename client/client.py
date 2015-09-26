@@ -15,47 +15,6 @@ wsURL = dropletURL
 if 'local' in sys.argv:
     wsURL = apoorvaURL
 
-class WSClient(WebSocket):
-    
-    def opened(self):
-        print "We established a connection"
-        self.player = SongPlayer("simarik.mp3")
-        self.player.startProcess()
-        self.player.pause()
-
-    def received_message(self, message):
-        print "We got : ", message
-        # assert message == "play"
-        if str(message) == "play":
-            print "My UNIX time is ", time()
-            self.player.pause()
-        elif "seek" in str(message):
-            print "Executing ", str(message)
-            # self.player.sendCommandToProcess(str(message)+"\n")
-            self.player.sendCommandToProcess("get_time")
-            serverPrescription = self.player.vlcProcess.stdout.read()
-            print "Server prescription", serverPrescription
-
-    def closed(self, code, reason=None):
-        print "Connection closed booooo!"
-
-wsclient = WSClient("ws://%s:8888/socket" % wsURL)
-
-
-
-def establishConnection():
-    global wsclient
-    while not wsclient:
-        pass
-    wsclient.connect()
-    wsclient.run_forever()
-
-WSThread = Thread(target=establishConnection)
-WSThread.daemon = True
-WSThread.start()
-
-write = wsclient.send
-
 
 class SongPlayer(object):
     def __init__(self, filename):
@@ -76,6 +35,82 @@ class SongPlayer(object):
     def seek(self, time):
         # time in seconds
         self.sendCommandToProcess("seek %d\n" % time)
+
+class WSClient(WebSocket):
+    
+    def opened(self):
+        print "We established a connection"
+        self.player = SongPlayer("simarik.mp3")
+        self.player.startProcess()
+        self.player.pause()
+        self.serverPrescription = 0
+
+    def received_message(self, message):
+        print "We got : ", message
+        # assert message == "play"
+        if str(message) == "play":
+            print "My UNIX time is ", time()
+            self.player.pause()
+        elif "seek" in str(message):
+            print "Executing ", str(message)
+            # self.player.sendCommandToProcess(str(message)+"\n")
+            self.player.sendCommandToProcess("get_time")
+            self.serverPrescription = int(str(message)[5:])
+            print "Server prescription", self.serverPrescription
+
+    def closed(self, code, reason=None):
+        print "Connection closed booooo!"
+
+wsclient = WSClient("ws://%s:8888/socket" % wsURL)
+
+
+
+def establishConnection():
+    global wsclient
+    while not wsclient:
+        pass
+    wsclient.connect()
+    print "RUNNING FOREVER"
+    wsclient.run_forever()
+
+WSThread = Thread(target=establishConnection)
+WSThread.daemon = True
+WSThread.start()
+
+while True:
+    try:
+        wsclient.player.vlcProcess
+        break
+    except:
+        pass
+
+write = wsclient.send
+
+def listenToVLC():
+    global wsclient
+    print "entered the listener"
+    
+    while True:
+        pollState = wsclient.player.vlcProcess.poll()
+        if pollState:
+            continue
+        line = wsclient.player.vlcProcess.stdout.readline()
+        line = line[2:]
+
+        try:
+            timestamp = int(line)
+            if timestamp == wsclient.serverPrescription:
+                print "We're in sync"
+            else:
+                print "Seeking to ", timestamp
+                wsclient.player.seek(timestamp)
+        except:
+            pass
+
+VLCListener = Thread(target=listenToVLC)
+VLCListener.daemon = True
+VLCListener.start()
+
 
 
 
