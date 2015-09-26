@@ -31,7 +31,10 @@ class WSClient(WebSocket):
             self.player.pause()
         elif "seek" in str(message):
             print "Executing ", str(message)
-            self.player.sendCommandToProcess(str(message)+"\n")
+            # self.player.sendCommandToProcess(str(message)+"\n")
+            self.player.sendCommandToProcess("get_time")
+            serverPrescription = self.player.vlcProcess.stdout.read()
+            print "Server prescription", serverPrescription
 
     def closed(self, code, reason=None):
         print "Connection closed booooo!"
@@ -62,7 +65,7 @@ class SongPlayer(object):
         self.vlcProcess = Popen(["/Applications/VLC.app/Contents/MacOS/VLC", "-I", "rc", self.filename], stdin=PIPE, stdout=PIPE)
 
     def sendCommandToProcess(self, input):
-        self.vlcProcess.stdin.write(input)
+        self.vlcProcess.stdin.write(input + '\n')
 
     def pause(self):
         self.sendCommandToProcess("pause\n")
