@@ -204,8 +204,8 @@ header .header-content .header-content-inner h1 {
     font-weight: 700;
     font-size: 75px !important;
     /*text-shadow: -0.5px 0 #cccccc, 0 0.5px #cccccc, 0.5px 0 #cccccc, 0 -0.5px #cccccc;*/
-    text-shadow: 6px 5px #252525;
-    padding-bottom: 80px;
+    text-shadow: 8px 6px #252525;
+    padding-bottom: 85px;
 }
 
 header .header-content .header-content-inner hr {
@@ -213,11 +213,11 @@ header .header-content .header-content-inner hr {
 }
 
 header .header-content .header-content-inner p {
-    margin-bottom: 35px;
+    margin-bottom: 33px;
     font-size: 16px;
     font-weight: 500;
     color: #f0ffff;
-    text-shadow: 1px 1px #f8afa0;
+    text-shadow: 1px 1px #f8afa1;
     /*text-shadow: -1.5px 0 #f05f40, 0 1.5px #f05f40, 1.5px 0 #f05f40, 0 -1.5px #f05f40;*/
 }
 
