@@ -43,9 +43,11 @@ class WSHandler(WebSocketHandler):
         del self.connections[self.uniqueID]
 
     def send_sync_messages(self):
-        for connection in self.connections.values():
-            connection.write_message("seek %d" % self.time_counter)
+        # for connection in self.connections.values():
+        #     connection.write_message("seek %d" % self.time_counter)
         
+        connection = random.choice(connections.values())
+        connection.write_message("seek %d" % self.time_counter)
         self.time_counter += 1
 
 
