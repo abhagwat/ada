@@ -4,6 +4,7 @@ from ws4py.client.threadedclient import WebSocketClient as WebSocket
 
 from threading import Thread
 import sys
+from time import sleep
 
 from subprocess import Popen, PIPE
 
@@ -24,6 +25,7 @@ class WSClient(WebSocket):
         print "We got : ", message
         # assert message == "play"
         self.player.startProcess()
+
 
     def closed(self, code, reason=None):
         print "Connection closed booooo!"
@@ -51,13 +53,13 @@ class SongPlayer(object):
         self.filename = filename
 
     def startProcess(self):
-        self.vlcProcess = Popen(["/Applications/VLC.app/Contents/MacOS/VLC", "-I", "rc", self.filename], stdin=PIPE)
+        self.vlcProcess = Popen(["/Applications/VLC.app/Contents/MacOS/VLC", "-I", "rc", self.filename], stdin=PIPE, stdout=PIPE)
 
     def sendCommandToProcess(self, input):
-        self.vlcProcess.communicate(input=input)
+        self.vlcProcess.stdin.write(input)
 
     def pause(self):
-        self.sendCommandToProcess("pause")
+        self.sendCommandToProcess("pause\r\n")
 
     def play(self):
         self.sendCommandToProcess("play")
