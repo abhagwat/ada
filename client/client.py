@@ -13,7 +13,7 @@ class WSClient(WebSocket):
     def closed(self):
         print "Connection closed booooo!"
 
-wsclient = WSClient("ws://ada:8888/socket")
+wsclient = WSClient("ws://104.131.112.48:8888/socket")
 
 
 
