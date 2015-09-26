@@ -4,7 +4,7 @@ from ws4py.client.threadedclient import WebSocketClient as WebSocket
 
 from threading import Thread
 import sys
-from time import sleep
+from time import time, sleep
 
 from subprocess import Popen, PIPE
 
@@ -27,6 +27,7 @@ class WSClient(WebSocket):
         print "We got : ", message
         # assert message == "play"
         if str(message) == "play":
+            print "My UNIX time is ", time()
             self.player.pause()
         elif "seek" in str(message):
             print "Executing ", str(message)
