@@ -18,9 +18,12 @@ class WSClient(WebSocket):
     
     def opened(self):
         print "We established a connection"
+        self.player = SongPlayer("simarik.mp3")
 
     def received_message(self, message):
         print "We got : ", message
+        assert message == "play"
+        self.player.play()
 
     def closed(self, code, reason=None):
         print "Connection closed booooo!"
@@ -44,7 +47,7 @@ write = wsclient.send
 
 
 class SongPlayer(object):
-    def __init__(self, filename=None):
+    def __init__(self, filename):
         self.filename = filename
 
     def startProcess(self):
