@@ -11,10 +11,12 @@ from subprocess import Popen, PIPE
 
 apoorvaURL = '128.237.222.84'
 dropletURL = '104.131.112.48'
+shantanuURL = '128.237.161.140'
 
 wsURL = dropletURL
 if 'local' in sys.argv:
-    wsURL = apoorvaURL
+    #wsURL = apoorvaURL
+    wsURL = shantanuURL
 
 try:
     myname = sys.argv[1]
