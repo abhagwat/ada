@@ -72,6 +72,13 @@ print "Client imported 6"
 
 class WSClient(WebSocket):
     
+    def alterVolume():
+        timeAmount = 0
+        while True:
+            wsclient.player.sendCommandToProcess("volume %d" % volumeFunction(timeAmount))
+            timeAmount += 0.25
+            sleep(0.25)
+    
     def opened(self):
         print "We established a connection"
         self.player = SongPlayer("simarik.mp3")
@@ -119,13 +126,7 @@ sleep(1)
 
 def write(arg):
     wsclient.send(arg)
-    timeAmount = 0
     
-def alterVolume():
-    while True:
-        wsclient.player.sendCommandToProcess("volume %d" % volumeFunction(timeAmount))
-        timeAmount += 0.25
-        sleep(0.25)
 
 print "Client imported 3"
 
