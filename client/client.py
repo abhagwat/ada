@@ -25,7 +25,8 @@ def start():
     wsclient.run_forever()
 
 WSThread = Thread(target=start)
-WSThread.run()
+WSThread.daemon = True
+WSThread.start()
 
 write = wsclient.send
 
