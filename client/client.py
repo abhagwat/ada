@@ -5,6 +5,7 @@ from ws4py.client.threadedclient import WebSocketClient as WebSocket
 from threading import Thread
 import sys
 from time import time, sleep
+import math
 
 from subprocess import Popen, PIPE
 
@@ -15,6 +16,10 @@ wsURL = dropletURL
 if 'local' in sys.argv:
     wsURL = apoorvaURL
 
+try:
+    volumeFunction = eval(sys.argv[2])
+except:
+    volumeFunction = lambda x: 200
 
 class SongPlayer(object):
     def __init__(self, filename):
@@ -83,7 +88,13 @@ print "Client imported 4"
 
 sleep(1)
 
-write = wsclient.send
+def write(arg):
+    wsclient.send(arg)
+    timeAmount = 0
+    while True:
+        wsclient.player.sendCommandToProcess("volume %d" % volumeFunction(timeAmount))
+        timeAmount += 0.25
+        sleep(0.25)
 
 print "Client imported 3"
 
@@ -121,8 +132,6 @@ VLCListener = Thread(target=listenToVLC)
 VLCListener.daemon = True
 VLCListener.start()
 
-
-print "Client imported 1"
 
 
 
