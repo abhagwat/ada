@@ -7,6 +7,10 @@ import tornado.web
 import simplejson as json
 
 class WSHandler(WebSocketHandler):
+    
+    def check_origin(self, origin):
+        return True
+
     def open(self):
         print "WebSocket opened"
 
