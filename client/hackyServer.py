@@ -2,8 +2,11 @@
 from flask import *
 import requests
 import client
+import math
 
 hackyServer = Flask(__name__)
+
+client.volumeFunction = (lambda x: 200 + (100*(math.sin(x)))) 
 
 @hackyServer.route('/hack')
 def hack():

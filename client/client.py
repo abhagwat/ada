@@ -16,7 +16,11 @@ wsURL = dropletURL
 if 'local' in sys.argv:
     wsURL = apoorvaURL
 
-myname = sys.argv[1]
+try:
+    myname = sys.argv[1]
+except:
+    myname = 'Robert'
+
 
 if myname == 'apoorva':
     discrete = (lambda x: 300 if (math.floor(x)/2) % 2 == 0 else 0)
@@ -74,6 +78,7 @@ class WSClient(WebSocket):
         self.player.startProcess()
         self.player.pause()
         self.serverPrescription = 0
+        self.volumeThread = Thread(target=alterVolume)
 
     def received_message(self, message):
         print "We got : ", message
@@ -81,6 +86,7 @@ class WSClient(WebSocket):
         if str(message) == "play":
             print "My UNIX time is ", time()
             self.player.pause()
+            self.volumeThread.start()
         elif "seek" in str(message):
             print "Executing ", str(message)
             # self.player.sendCommandToProcess(str(message)+"\n")
@@ -114,6 +120,8 @@ sleep(1)
 def write(arg):
     wsclient.send(arg)
     timeAmount = 0
+    
+def alterVolume():
     while True:
         wsclient.player.sendCommandToProcess("volume %d" % volumeFunction(timeAmount))
         timeAmount += 0.25
